@@ -1,0 +1,27 @@
+name: browsersolver
+version: 1.0.0
+description: "Fetch web pages behind Cloudflare, DataDome and similar protections for the built-in web_extract tool, through the BrowserSolver web unlocker API."
+author: BrowserSolver
+license: MIT
+kind: backend
+requires_hermes: ">=0.21.6"
+provides_web_providers:
+  - browsersolver
+provides_tools: []
+provides_hooks: []
+provides_middleware: []
+requires_env:
+  - name: BROWSERSOLVER_API_KEY
+    description: BrowserSolver API key
+    url: https://app.browsersolver.com
+    secret: true
+config_schema:
+  api_key:
+    type: secret
+    env: BROWSERSOLVER_API_KEY
+    label: BrowserSolver API key
+  engine:
+    type: str
+    default: webunlocker
+    label: Engine
+    description: crawler (plain HTTP, cheapest), rendering (headless browser for JavaScript pages) or webunlocker (gets past anti-bot protection, most expensive).
